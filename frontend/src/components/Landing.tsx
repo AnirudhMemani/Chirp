@@ -9,6 +9,10 @@ export const Landing = () => {
   const [localVideoTrack, setlocalVideoTrack] =
     useState<MediaStreamTrack | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
+  const [activeTimeout, setActiveTimeout] = useState<
+    NodeJS.Timeout | undefined
+  >();
 
   const [joined, setJoined] = useState(false);
 
@@ -37,34 +41,56 @@ export const Landing = () => {
 
   if (!joined) {
     return (
-      <div className="h-dvh flex justify-center items-center gap-6 w-full">
-        <video
-          autoPlay
-          ref={videoRef}
-        ></video>
-        <div className="flex gap-5">
-          <Input
-            crossOrigin={undefined}
-            type="text"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            label="Write your name"
-            className="pr-20"
-            containerProps={{
-              className: "min-w-0",
-            }}
-          />
-          <Button
-            placeholder={undefined}
-            className="rounded"
-            onClick={() => {
-              setJoined(true);
-            }}
-          >
-            Join
-          </Button>
+      <div className="min-h-dvh flex justify-center w-full">
+        <div className="py-24 flex flex-col gap-6">
+          <h1 className="text-lg font-medium text-center font-sans mb-20">
+            <span className="text-[#FF7E01] text-2xl font-semibold">
+              Omegle
+            </span>{" "}
+            - Talk to strangers!
+          </h1>
+          <video
+            autoPlay
+            ref={videoRef}
+            className="border border-blue-gray-500 mb-6"
+          ></video>
+          <div className="flex gap-5">
+            <Input
+              crossOrigin={undefined}
+              type="text"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              label="What should people call you"
+              className="pr-20 !text-blue-gray-200"
+              containerProps={{
+                className: "min-w-0",
+              }}
+              labelProps={{
+                className: "!text-white",
+              }}
+            />
+            <Button
+              placeholder={undefined}
+              className="rounded flex items-center justify-center text-center"
+              onClick={() => {
+                if (name.length > 0) {
+                  setJoined(true);
+                } else {
+                  clearTimeout(activeTimeout);
+                  setShowErrorMessage(true);
+                  const id = setTimeout(() => setShowErrorMessage(false), 2500);
+                  setActiveTimeout(id);
+                }
+              }}
+            >
+              Search
+            </Button>
+          </div>
+          {showErrorMessage && (
+            <p className="text-red-500 capitalize">please enter a name</p>
+          )}
         </div>
       </div>
     );

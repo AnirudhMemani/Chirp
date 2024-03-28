@@ -43,7 +43,7 @@ export const Landing = () => {
                 <div className="py-24 flex flex-col gap-6">
                     <h1 className="text-lg font-medium text-center font-sans mb-20">
                         <span className="text-[#FF7E01] text-2xl font-semibold">
-                            Omegle
+                            Chirp
                         </span>{" "}
                         - Talk to strangers!
                     </h1>

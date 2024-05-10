@@ -1,1 +1,1 @@
-## Chirp - Video chat P2P Application made using Web Socket and WebRTC 
+## Serendipity - A PeerToPeer webRTC video chat application using WebSockets (Not Socket.io)

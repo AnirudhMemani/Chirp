@@ -61,7 +61,7 @@ The application uses WebRTC for establishing peer-to-peer connections and WebSoc
 
 # WebRTC
 
-+ simple-peer: A lightweight wrapper around WebRTC to simplify peer-to-peer connections.
++ Simple-peer: A lightweight wrapper around WebRTC to simplify peer-to-peer connections.
 + Video Component: Manages the local and remote video streams using WebRTC.
 
 # WebSockets

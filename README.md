@@ -55,7 +55,9 @@ yarn dev
 
 Open http://localhost:3000 with your browser to see the application.
 
-# The application uses WebRTC for establishing peer-to-peer connections and WebSockets for signaling. Below is a brief overview of how these technologies are integrated:
+# WebRTC and WebSockets Integration
+
+The application uses WebRTC for establishing peer-to-peer connections and WebSockets for signaling. Below is a brief overview of how these technologies are integrated:
 
 # WebRTC
 
